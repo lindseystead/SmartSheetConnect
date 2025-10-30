@@ -47,51 +47,65 @@ export async function getUncachableGoogleSheetClient() {
   return google.sheets({ version: 'v4', auth: oauth2Client });
 }
 
+// In-memory cache for the spreadsheet ID (persists across requests in same process)
+let cachedSpreadsheetId: string | null = null;
+
 export async function createOrGetSpreadsheet() {
   const sheets = await getUncachableGoogleSheetClient();
   
-  // Try to find existing spreadsheet
-  try {
-    const response = await sheets.spreadsheets.get({
-      spreadsheetId: process.env.SPREADSHEET_ID || '',
-    });
-    return response.data.spreadsheetId!;
-  } catch (error) {
-    // Create new spreadsheet if it doesn't exist
-    const response = await sheets.spreadsheets.create({
-      requestBody: {
-        properties: {
-          title: 'Lifesaver Tech - Lead Submissions',
-        },
-        sheets: [
-          {
-            properties: {
-              title: 'Leads',
-            },
-            data: [
-              {
-                rowData: [
-                  {
-                    values: [
-                      { userEnteredValue: { stringValue: 'Timestamp' } },
-                      { userEnteredValue: { stringValue: 'Name' } },
-                      { userEnteredValue: { stringValue: 'Email' } },
-                      { userEnteredValue: { stringValue: 'Phone' } },
-                      { userEnteredValue: { stringValue: 'Message' } },
-                    ],
-                  },
-                ],
-              },
-            ],
-          },
-        ],
-      },
-    });
-    
-    const spreadsheetId = response.data.spreadsheetId!;
-    console.log(`Created new spreadsheet: https://docs.google.com/spreadsheets/d/${spreadsheetId}`);
-    return spreadsheetId;
+  // Return cached ID if available
+  if (cachedSpreadsheetId) {
+    return cachedSpreadsheetId;
   }
+  
+  // Check if SPREADSHEET_ID is set in environment
+  if (process.env.SPREADSHEET_ID) {
+    try {
+      const response = await sheets.spreadsheets.get({
+        spreadsheetId: process.env.SPREADSHEET_ID,
+      });
+      cachedSpreadsheetId = response.data.spreadsheetId!;
+      return cachedSpreadsheetId;
+    } catch (error) {
+      console.warn(`SPREADSHEET_ID in env is invalid, creating new spreadsheet`);
+    }
+  }
+  
+  // Create new spreadsheet with headers
+  const response = await sheets.spreadsheets.create({
+    requestBody: {
+      properties: {
+        title: 'Lifesaver Tech - Lead Submissions',
+      },
+      sheets: [
+        {
+          properties: {
+            title: 'Leads',
+          },
+        },
+      ],
+    },
+  });
+  
+  const spreadsheetId = response.data.spreadsheetId!;
+  
+  // Add headers to the new sheet
+  await sheets.spreadsheets.values.update({
+    spreadsheetId,
+    range: 'Leads!A1:E1',
+    valueInputOption: 'RAW',
+    requestBody: {
+      values: [
+        ['Timestamp', 'Name', 'Email', 'Phone', 'Message'],
+      ],
+    },
+  });
+  
+  cachedSpreadsheetId = spreadsheetId;
+  console.log(`✅ Created new spreadsheet: https://docs.google.com/spreadsheets/d/${spreadsheetId}`);
+  console.log(`💡 Set SPREADSHEET_ID=${spreadsheetId} in your environment to reuse this sheet`);
+  
+  return spreadsheetId;
 }
 
 export async function appendLeadToSheet(

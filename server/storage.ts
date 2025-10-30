@@ -16,8 +16,8 @@ export class MemStorage implements IStorage {
       lead.message
     );
     
-    // Send email notification (using console log for now)
-    const notificationEmail = process.env.NOTIFICATION_EMAIL || 'owner@lifesavertech.com';
+    // Send email notification
+    const notificationEmail = process.env.NOTIFICATION_EMAIL || 'info@lifesavertech.ca';
     await sendEmailNotification(
       notificationEmail,
       lead.name,

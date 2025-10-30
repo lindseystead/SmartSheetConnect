@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Zap } from "lucide-react";
-import { SiGithub, SiTwitter, SiLinkedin } from "react-icons/si";
+import { SiGithub, SiX, SiLinkedin } from "react-icons/si";
 
 export function Footer() {
   const scrollToSection = (id: string) => {
@@ -30,7 +30,7 @@ export function Footer() {
                 <SiGithub className="w-5 h-5" />
               </Button>
               <Button variant="ghost" size="icon" data-testid="button-social-twitter">
-                <SiTwitter className="w-5 h-5" />
+                <SiX className="w-5 h-5" />
               </Button>
               <Button variant="ghost" size="icon" data-testid="button-social-linkedin">
                 <SiLinkedin className="w-5 h-5" />
