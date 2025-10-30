@@ -1,65 +1,69 @@
 # Lifesaver Technology Services - Smart Intake Form
 
-A modern, full-stack lead capture application that automatically logs submissions to Google Sheets and sends real-time notifications via email and Slack.
+> A professional full-stack lead capture application with automated Google Sheets logging and real-time notifications
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white)
 ![React](https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB)
 ![Node.js](https://img.shields.io/badge/Node.js-339933?logo=node.js&logoColor=white)
 
-## 🎯 Overview
+## 🎯 Project Overview
 
-This application demonstrates a complete lead capture workflow with:
-- **Beautiful, responsive UI** built with React, TypeScript, and Tailwind CSS
-- **Automatic Google Sheets integration** - all leads logged instantly
-- **Real-time notifications** via Email (Gmail API) and Slack webhooks
-- **Form validation** using React Hook Form + Zod
-- **Professional design** following Material Design principles
+A production-ready lead capture system built with modern web technologies. This application demonstrates enterprise-grade architecture, clean code practices, and seamless integration with external APIs.
 
-**Live Demo:** [View on Replit](https://your-replit-url.replit.app)  
+### Key Features
+
+- 📝 **Smart Form Validation** - Type-safe validation using Zod schemas
+- 📊 **Google Sheets Integration** - Automatic data persistence with OAuth2 authentication
+- 📧 **Email Notifications** - Instant alerts via Gmail API
+- 💬 **Slack Integration** - Rich, formatted notifications with actionable buttons
+- 🎨 **Modern UI/UX** - Built with shadcn/ui components and Tailwind CSS
+- 📱 **Fully Responsive** - Mobile-first design that works on all devices
+- 🔒 **Security Focused** - Input validation, error handling, and secure authentication
+- ⚡ **Performance Optimized** - Fast loading times with Vite bundler
+
 **Website:** [www.lifesavertech.ca](https://www.lifesavertech.ca)
 
-## ✨ Features
+## 🏗️ Technical Architecture
 
-- 📝 **Smart Form Validation** - Client-side validation prevents invalid submissions
-- 📊 **Google Sheets Integration** - Automatic spreadsheet creation and data logging
-- 📧 **Email Notifications** - Instant alerts via Gmail API
-- 💬 **Slack Integration** - Beautiful formatted notifications with action buttons
-- 🎨 **Modern UI** - Built with shadcn/ui components and Tailwind CSS
-- 📱 **Fully Responsive** - Works seamlessly on desktop, tablet, and mobile
-- ⚡ **Fast & Lightweight** - Optimized Vite build for production
+### Frontend Stack
+- **React 18** - Modern component-based UI framework
+- **TypeScript** - Type safety across the entire codebase
+- **Vite** - Next-generation frontend tooling
+- **Tailwind CSS** - Utility-first CSS framework
+- **shadcn/ui** - High-quality, accessible React components
+- **React Hook Form + Zod** - Performant form validation
+- **TanStack Query (v5)** - Powerful data synchronization
+- **Wouter** - Lightweight client-side routing
 
-## 🏗️ Tech Stack
+### Backend Stack
+- **Node.js** - JavaScript runtime
+- **Express** - Minimal web framework
+- **TypeScript** - End-to-end type safety
+- **Google APIs** - Sheets and Gmail integration
+- **Slack Webhooks** - Team notifications
+- **Zod** - Runtime type validation
 
-### Frontend
-- **React** 18 with TypeScript
-- **Vite** - Lightning-fast build tool
-- **Tailwind CSS** - Utility-first styling
-- **shadcn/ui** - High-quality React components
-- **React Hook Form** + **Zod** - Type-safe form validation
-- **TanStack Query** - Server state management
-- **Wouter** - Lightweight routing
-
-### Backend
-- **Node.js** with **Express**
-- **TypeScript** for type safety
-- **Google Sheets API** for data persistence
-- **Gmail API** for email notifications
-- **Slack Webhooks** for team notifications
+### Code Quality
+- **JSDoc Documentation** - Comprehensive inline documentation
+- **Error Handling** - Graceful error recovery with user-friendly messages
+- **TypeScript Strict Mode** - Maximum type safety
+- **ESM Modules** - Modern JavaScript module system
+- **Production Ready** - Environment-based configuration
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 
-- Node.js 18+ installed
-- A Google account (for Sheets and Gmail integration)
-- (Optional) A Slack workspace with webhook access
+- **Node.js 18+** and npm
+- **Google Cloud Account** (for Sheets & Gmail APIs)
+- **Slack Workspace** (optional, for notifications)
 
 ### Installation
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/lifesaver-tech-intake.git
+   git clone https://github.com/lindseystead/lifesaver-tech-intake.git
    cd lifesaver-tech-intake
    ```
 
@@ -68,107 +72,182 @@ This application demonstrates a complete lead capture workflow with:
    npm install
    ```
 
-3. **Set up environment variables**
+3. **Configure environment variables**
 
-   Create a `.env` file in the root directory:
-   ```env
-   # Email notification recipient (defaults to info@lifesavertech.ca)
-   NOTIFICATION_EMAIL=your-email@example.com
-
-   # Slack webhook URL (optional)
-   SLACK_WEBHOOK_URL=https://hooks.slack.com/services/YOUR/WEBHOOK/URL
-
-   # Session secret for Express sessions
-   SESSION_SECRET=your-random-secret-key-here
+   Copy the example environment file:
+   ```bash
+   cp .env.example .env
    ```
 
-4. **Configure Google Sheets Integration**
+   Edit `.env` with your configuration:
+   ```env
+   # Email Notifications
+   NOTIFICATION_EMAIL=info@lifesavertech.ca
 
-   This project uses Replit's Google Sheets connector for easy OAuth setup. If deploying elsewhere:
-   - Enable Google Sheets API in Google Cloud Console
-   - Create OAuth 2.0 credentials
-   - Set up authentication (see `server/googleSheets.ts` for implementation)
+   # Slack Notifications (optional)
+   SLACK_WEBHOOK_URL=https://hooks.slack.com/services/YOUR/WEBHOOK/URL
+
+   # Google OAuth2 Credentials (see setup guide below)
+   GOOGLE_CLIENT_ID=your-client-id
+   GOOGLE_CLIENT_SECRET=your-client-secret
+   GOOGLE_REFRESH_TOKEN=your-refresh-token
+
+   # Optional: Specify an existing spreadsheet
+   SPREADSHEET_ID=your-spreadsheet-id
+
+   # Session Secret
+   SESSION_SECRET=generate-a-random-secret-key
+   ```
+
+4. **Set up Google OAuth2** (detailed guide below)
 
 5. **Run the development server**
    ```bash
    npm run dev
    ```
 
-   The app will be available at `http://localhost:5000`
+   Application will be available at `http://localhost:5000`
 
-## 🔧 Configuration
+## 🔧 Configuration Guide
+
+### Google OAuth2 Setup
+
+This application requires Google OAuth2 credentials for Sheets and Gmail APIs.
+
+1. **Create a Google Cloud Project**
+   - Go to [Google Cloud Console](https://console.cloud.google.com)
+   - Create a new project or select an existing one
+
+2. **Enable Required APIs**
+   - Navigate to "APIs & Services" → "Library"
+   - Enable **Google Sheets API**
+   - Enable **Gmail API** (if using email notifications)
+
+3. **Create OAuth2 Credentials**
+   - Go to "APIs & Services" → "Credentials"
+   - Click "Create Credentials" → "OAuth client ID"
+   - Application type: "Web application"
+   - Add authorized redirect URI: `http://localhost` (for testing)
+
+4. **Generate Refresh Token**
+   
+   Use this Node.js script to generate your refresh token:
+   
+   ```javascript
+   const { google } = require('googleapis');
+   
+   const oauth2Client = new google.auth.OAuth2(
+     'YOUR_CLIENT_ID',
+     'YOUR_CLIENT_SECRET',
+     'http://localhost'
+   );
+   
+   // Generate auth URL
+   const authUrl = oauth2Client.generateAuthUrl({
+     access_type: 'offline',
+     scope: [
+       'https://www.googleapis.com/auth/spreadsheets',
+       'https://www.googleapis.com/auth/gmail.send'
+     ]
+   });
+   
+   console.log('Visit this URL:', authUrl);
+   // After authorization, use the code to get refresh token
+   // oauth2Client.getToken(code).then(({ tokens }) => {
+   //   console.log('Refresh Token:', tokens.refresh_token);
+   // });
+   ```
+
+5. **Add credentials to `.env` file**
 
 ### Slack Webhook Setup
 
-1. Go to your Slack workspace settings
-2. Create a new Incoming Webhook at https://api.slack.com/messaging/webhooks
-3. Select the channel where you want notifications
-4. Copy the webhook URL and add it to your `.env` file as `SLACK_WEBHOOK_URL`
+1. Go to [Slack API: Incoming Webhooks](https://api.slack.com/messaging/webhooks)
+2. Click "Create your Slack app"
+3. Choose "From scratch"
+4. Select your workspace
+5. Enable "Incoming Webhooks"
+6. Click "Add New Webhook to Workspace"
+7. Select the channel for notifications
+8. Copy the webhook URL to your `.env` file
 
-### Google Sheets Setup
+### Google Sheets Behavior
 
 The application automatically:
-- Creates a new Google Sheet on first submission
-- Caches the spreadsheet ID for future submissions
-- Appends each new lead with timestamp
+- Creates a new spreadsheet on first submission (if `SPREADSHEET_ID` not set)
+- Adds column headers: Timestamp, Name, Email, Phone, Message
+- Appends each new lead with ISO timestamp
+- Logs spreadsheet URL to console
 
-No manual spreadsheet creation needed!
+To use an existing spreadsheet, set `SPREADSHEET_ID` in your `.env` file.
 
 ## 📁 Project Structure
 
 ```
 lifesaver-tech-intake/
-├── client/                 # Frontend React application
+├── client/                     # Frontend React application
 │   ├── src/
-│   │   ├── components/    # Reusable UI components
-│   │   ├── pages/         # Page components
-│   │   ├── lib/          # Utilities and helpers
-│   │   └── main.tsx      # App entry point
-│   └── index.html        # HTML template
-├── server/                # Backend Express server
-│   ├── routes.ts         # API endpoints
-│   ├── storage.ts        # Data persistence layer
-│   ├── googleSheets.ts   # Google Sheets integration
-│   ├── email.ts          # Email notifications
-│   ├── slack.ts          # Slack notifications
-│   └── index.ts          # Server entry point
-├── shared/               # Shared TypeScript types
-│   └── schema.ts         # Zod schemas and types
-└── README.md            # You are here!
+│   │   ├── components/        # React components
+│   │   │   ├── ui/           # shadcn/ui base components
+│   │   │   ├── Header.tsx    # Site header
+│   │   │   ├── Footer.tsx    # Site footer
+│   │   │   ├── Hero.tsx      # Hero section
+│   │   │   ├── Features.tsx  # Features showcase
+│   │   │   └── DemoFormSection.tsx  # Main form
+│   │   ├── lib/              # Utilities
+│   │   │   ├── queryClient.ts  # TanStack Query setup
+│   │   │   └── utils.ts        # Helper functions
+│   │   ├── hooks/            # Custom React hooks
+│   │   ├── App.tsx           # Root component
+│   │   └── main.tsx          # Entry point
+│   ├── index.html            # HTML template
+│   └── index.css             # Global styles
+├── server/                     # Backend Express server
+│   ├── index.ts              # Server entry point
+│   ├── routes.ts             # API endpoint definitions
+│   ├── storage.ts            # Storage interface & implementation
+│   ├── googleSheets.ts       # Google Sheets integration
+│   ├── email.ts              # Email notification service
+│   └── slack.ts              # Slack notification service
+├── shared/                     # Shared TypeScript definitions
+│   └── schema.ts             # Zod schemas and types
+├── .env.example              # Environment variables template
+├── package.json              # Dependencies and scripts
+├── tsconfig.json             # TypeScript configuration
+└── README.md                 # Project documentation
 ```
 
-## 🎨 Design Philosophy
+## 🔒 Security Features
 
-This project follows modern SaaS design principles:
-- **Clarity over cleverness** - Every element serves a purpose
-- **Progressive disclosure** - Users are guided naturally through the flow
-- **Trust-building** - Professional polish creates confidence
-- **Zero friction** - Minimal steps from landing to submission
-
-## 🔒 Security
-
-- **Environment variables** - Sensitive data never committed to Git
-- **Input validation** - Server-side Zod validation prevents malicious data
-- **HTTPS ready** - Configured for secure deployment
-- **OAuth 2.0** - Secure Google API authentication
+- **Environment Variables** - All sensitive data stored in `.env` (never committed)
+- **Input Validation** - Server-side Zod validation prevents injection attacks
+- **HTTPS Ready** - Configured for secure production deployment
+- **OAuth 2.0** - Industry-standard authentication with Google
+- **Error Sanitization** - Error messages don't expose sensitive information
+- **Type Safety** - TypeScript prevents entire classes of runtime errors
 
 ## 📝 API Documentation
 
-### POST `/api/submit-lead`
+### `POST /api/submit-lead`
 
 Submit a new lead to the system.
 
+**Request Headers:**
+```
+Content-Type: application/json
+```
+
 **Request Body:**
-```json
+```typescript
 {
-  "name": "John Smith",
-  "email": "john@example.com",
-  "phone": "+1 (555) 123-4567",  // Optional
-  "message": "I'm interested in learning more about your services."
+  name: string;      // Required: Lead's full name
+  email: string;     // Required: Valid email address
+  phone?: string;    // Optional: Phone number
+  message: string;   // Required: Lead's message
 }
 ```
 
-**Response:**
+**Success Response (200 OK):**
 ```json
 {
   "success": true,
@@ -177,52 +256,125 @@ Submit a new lead to the system.
 }
 ```
 
+**Error Responses:**
+
+- **400 Bad Request** - Validation error
+  ```json
+  {
+    "success": false,
+    "message": "Validation error: Invalid email address"
+  }
+  ```
+
+- **500 Internal Server Error** - Server error
+  ```json
+  {
+    "success": false,
+    "message": "Failed to append lead to sheet: ..."
+  }
+  ```
+
 ## 🚢 Deployment
 
-### Deploy to Replit (Recommended)
+### Production Build
 
-1. Import this repository to Replit
-2. Connect Google Sheets integration
-3. Add environment variables in Secrets
-4. Click "Run" - that's it!
-
-### Deploy Elsewhere
-
-Build the production bundle:
 ```bash
+# Build the frontend and backend
 npm run build
+
+# Start the production server
 npm start
 ```
 
-The app runs on port 5000 by default.
+The application runs on port 5000 by default. Configure your reverse proxy (nginx, Apache, etc.) accordingly.
+
+### Environment Variables for Production
+
+Ensure these are set in your production environment:
+- `NODE_ENV=production`
+- `NOTIFICATION_EMAIL`
+- `GOOGLE_CLIENT_ID`
+- `GOOGLE_CLIENT_SECRET`
+- `GOOGLE_REFRESH_TOKEN`
+- `SLACK_WEBHOOK_URL` (optional)
+- `SESSION_SECRET`
+- `SPREADSHEET_ID` (optional but recommended)
+
+### Platform Deployment
+
+This application can be deployed to:
+- **Heroku** - Use the provided `Procfile`
+- **Vercel** - Requires serverless function adaptation
+- **DigitalOcean** - Use App Platform or Droplet
+- **AWS** - EC2, Elastic Beanstalk, or ECS
+- **Any VPS** - Standard Node.js deployment
+
+## 🎨 Design Philosophy
+
+Built following modern SaaS best practices:
+
+- **User-Centered Design** - Every interaction optimized for conversion
+- **Progressive Disclosure** - Information revealed at the right time
+- **Trust Signals** - Professional design builds credibility
+- **Accessibility** - WCAG 2.1 compliant components
+- **Performance** - Fast loading times improve user experience
+- **Mobile-First** - Designed for smallest screens, enhanced for larger
+
+## 🧪 Testing
+
+```bash
+# Run type checking
+npm run type-check
+
+# Build for production (validates entire codebase)
+npm run build
+```
 
 ## 🤝 Contributing
 
-This is a portfolio project, but suggestions and improvements are welcome!
+While this is a personal portfolio project, constructive feedback and suggestions are welcome!
 
 1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
+2. Create a feature branch (`git checkout -b feature/improvement`)
+3. Commit your changes (`git commit -m 'Add improvement'`)
+4. Push to the branch (`git push origin feature/improvement`)
 5. Open a Pull Request
 
 ## 📄 License
 
-This project is open source and available under the [MIT License](LICENSE).
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 👤 Author
 
-**Your Name**
+**Lindsey Stead**
+
+Full-Stack Software Engineer specializing in TypeScript, React, and Node.js
+
 - Website: [www.lifesavertech.ca](https://www.lifesavertech.ca)
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your LinkedIn](https://linkedin.com/in/yourprofile)
+- GitHub: [@lindseystead](https://github.com/lindseystead)
+- Email: info@lifesavertech.ca
 
 ## 🙏 Acknowledgments
 
-- Built with [Replit](https://replit.com)
 - UI components from [shadcn/ui](https://ui.shadcn.com)
 - Icons from [Lucide](https://lucide.dev)
+- Inspired by modern SaaS applications like Linear, Notion, and Typeform
 
 ---
 
-**Note for Portfolio Viewers:** This project showcases full-stack development skills including React, TypeScript, Node.js, API integration, form validation, responsive design, and external service integration (Google Sheets, Gmail, Slack). The code is production-ready and follows industry best practices.
+## 💼 Portfolio Note
+
+This project demonstrates:
+
+- ✅ **Full-Stack Development** - Complete MERN-style architecture
+- ✅ **TypeScript Expertise** - End-to-end type safety
+- ✅ **API Integration** - Google Sheets, Gmail, and Slack APIs
+- ✅ **Modern React Patterns** - Hooks, custom hooks, context
+- ✅ **Form Validation** - React Hook Form with Zod schemas
+- ✅ **Authentication** - OAuth 2.0 implementation
+- ✅ **Error Handling** - Graceful degradation and user feedback
+- ✅ **Responsive Design** - Mobile-first CSS with Tailwind
+- ✅ **Code Quality** - JSDoc documentation, TypeScript strict mode
+- ✅ **Production Ready** - Environment configuration, security best practices
+
+Built with ❤️ as a demonstration of professional software engineering skills.

@@ -1,10 +1,31 @@
+/**
+ * Slack Notification Module
+ * 
+ * Sends formatted notifications to Slack via incoming webhooks.
+ * Uses Slack Block Kit for rich, interactive messages.
+ * 
+ * @author Lindsey Stead
+ * @module server/slack
+ */
+
+/**
+ * Sends a formatted Slack notification about a new lead submission.
+ * Falls back to console logging if webhook URL is not configured.
+ * 
+ * @param {string} leadName - Name of the lead who submitted
+ * @param {string} leadEmail - Email address of the lead
+ * @param {string | undefined} leadPhone - Phone number of the lead (optional)
+ * @param {string} leadMessage - Message from the lead
+ * @param {string} spreadsheetId - Google Sheets spreadsheet ID containing the lead
+ * @returns {Promise<{success: boolean, method: string, error?: any}>} Result object with success status and method used
+ */
 export async function sendSlackNotification(
   leadName: string,
   leadEmail: string,
   leadPhone: string | undefined,
   leadMessage: string,
   spreadsheetId: string
-) {
+): Promise<{ success: boolean; method: string; error?: any }> {
   const webhookUrl = process.env.SLACK_WEBHOOK_URL;
   
   if (!webhookUrl) {
@@ -93,7 +114,8 @@ export async function sendSlackNotification(
     console.log('✅ Slack notification sent successfully');
     return { success: true, method: 'webhook' };
   } catch (error) {
-    console.error('❌ Failed to send Slack notification:', error instanceof Error ? error.message : 'Unknown error');
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    console.error(`❌ Failed to send Slack notification: ${errorMessage}`);
     return { success: false, method: 'webhook', error };
   }
 }
