@@ -28,7 +28,7 @@ export function SocialProofSection() {
             <div className="space-y-6">
               <Quote className="w-10 h-10 text-primary" />
               <p className="text-lg italic leading-relaxed">
-                "Lifesaver Tech transformed how we handle incoming leads. We went from manually copying data to having everything organized automatically. Our response time improved dramatically."
+                "Lifesaver Technology Services transformed how we handle incoming leads. We went from manually copying data to having everything organized automatically. Our response time improved dramatically."
               </p>
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">

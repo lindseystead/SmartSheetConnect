@@ -20,11 +20,20 @@ export function Footer() {
               <div className="w-8 h-8 bg-primary rounded-md flex items-center justify-center">
                 <Zap className="w-5 h-5 text-primary-foreground" />
               </div>
-              <span className="text-lg font-semibold">Lifesaver Tech</span>
+              <span className="text-lg font-semibold">Lifesaver Technology Services</span>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
               Automated intake forms that help businesses capture and organize leads effortlessly.
             </p>
+            <a 
+              href="https://www.lifesavertech.ca" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-sm text-primary hover-elevate rounded px-2 py-1 inline-block -ml-2"
+              data-testid="link-website"
+            >
+              www.lifesavertech.ca
+            </a>
             <div className="flex gap-2">
               <Button variant="ghost" size="icon" data-testid="button-social-github">
                 <SiGithub className="w-5 h-5" />
@@ -92,7 +101,7 @@ export function Footer() {
         </div>
 
         <div className="pt-8 border-t flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
-          <div>© 2025 Lifesaver Tech. All rights reserved.</div>
+          <div>© 2025 Lifesaver Technology Services. All rights reserved.</div>
           <div className="flex gap-6">
             <button className="hover-elevate rounded px-2 py-1" data-testid="link-privacy">
               Privacy Policy

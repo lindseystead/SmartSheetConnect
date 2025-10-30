@@ -18,7 +18,7 @@ Message: ${leadMessage}
 View in Google Sheets: https://docs.google.com/spreadsheets/d/${spreadsheetId}
 
 ---
-Sent from Lifesaver Tech Intake Form
+Sent from Lifesaver Technology Services Intake Form
   `.trim();
   
   // Log notification to console

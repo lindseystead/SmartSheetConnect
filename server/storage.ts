@@ -1,6 +1,7 @@
 import { type LeadSubmission } from "@shared/schema";
 import { appendLeadToSheet } from "./googleSheets";
 import { sendEmailNotification } from "./email";
+import { sendSlackNotification } from "./slack";
 
 export interface IStorage {
   submitLead(lead: LeadSubmission): Promise<{ spreadsheetId: string; rowNumber: number }>;
@@ -20,6 +21,15 @@ export class MemStorage implements IStorage {
     const notificationEmail = process.env.NOTIFICATION_EMAIL || 'info@lifesavertech.ca';
     await sendEmailNotification(
       notificationEmail,
+      lead.name,
+      lead.email,
+      lead.phone,
+      lead.message,
+      result.spreadsheetId
+    );
+    
+    // Send Slack notification
+    await sendSlackNotification(
       lead.name,
       lead.email,
       lead.phone,

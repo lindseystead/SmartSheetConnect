@@ -33,8 +33,8 @@ export function DemoFormSection() {
 
   const mutation = useMutation<LeadSubmissionResponse, Error, LeadSubmission>({
     mutationFn: async (data) => {
-      const response = await apiRequest<LeadSubmissionResponse>("POST", "/api/submit-lead", data);
-      return response;
+      const response = await apiRequest("POST", "/api/submit-lead", data);
+      return await response.json();
     },
     onSuccess: () => {
       setIsSuccess(true);

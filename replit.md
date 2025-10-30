@@ -1,10 +1,12 @@
-# Lifesaver Tech - Smart Intake Form
+# Lifesaver Technology Services - Smart Intake Form
 
 ## Overview
 
-Lifesaver Tech is a lead capture and management application that serves as both a functional business tool and a marketing demonstration. The application provides an automated intake form system that instantly logs submissions to Google Sheets and sends real-time notifications to business owners.
+Lifesaver Technology Services is a lead capture and management application that serves as both a functional business tool and a marketing demonstration. The application provides an automated intake form system that instantly logs submissions to Google Sheets and sends real-time notifications to business owners via email and Slack.
 
-The primary purpose is to demonstrate a zero-friction lead capture workflow - visitors submit contact information through a polished web form, which automatically synchronizes with Google Sheets for data organization and triggers email notifications to ensure rapid follow-up.
+The primary purpose is to demonstrate a zero-friction lead capture workflow - visitors submit contact information through a polished web form, which automatically synchronizes with Google Sheets for data organization and triggers instant notifications (email and Slack) to ensure rapid follow-up.
+
+**Website:** www.lifesavertech.ca
 
 ## User Preferences
 
@@ -56,7 +58,7 @@ Preferred communication style: Simple, everyday language.
 **Data Flow:**
 1. Client submits form data via POST request
 2. Server validates data against Zod schema
-3. Parallel operations: Google Sheets logging and email notification
+3. Parallel operations: Google Sheets logging, email notification, and Slack notification
 4. Response sent to client with success/error status
 
 **Storage Strategy:**
@@ -79,14 +81,26 @@ Preferred communication style: Simple, everyday language.
 - Environment variables for deployment configuration:
   - `REPL_IDENTITY` or `WEB_REPL_RENEWAL` for authentication tokens
   - `NOTIFICATION_EMAIL` for alert recipient (defaults to info@lifesavertech.ca)
+  - `SLACK_WEBHOOK_URL` for Slack notifications (optional)
+  - `SESSION_SECRET` for Express session encryption
   - `DATABASE_URL` (configured but not actively used - prepared for future database integration)
 - Development-only plugins for error overlay and debugging
 
-**Email Notification System:**
+**Notification Systems:**
+
+*Email Notifications:*
 - Console-based logging for development/debugging
-- Attempted Gmail API integration (requires same OAuth setup as Sheets)
+- Gmail API integration (requires same OAuth setup as Sheets)
 - Fallback behavior when email API unavailable
 - Notification includes lead details and direct link to Google Sheets
+- Sends to email configured in `NOTIFICATION_EMAIL` (defaults to info@lifesavertech.ca)
+
+*Slack Notifications:*
+- Webhook-based integration using Slack Incoming Webhooks
+- Beautiful formatted messages using Slack Block Kit
+- Includes all lead details and clickable button to view in Google Sheets
+- Falls back to console logging if `SLACK_WEBHOOK_URL` not configured
+- Portfolio-friendly implementation (no OAuth complexity)
 
 **Database Configuration (Future-Ready):**
 - Drizzle ORM configured for PostgreSQL via `@neondatabase/serverless`
