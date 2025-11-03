@@ -2,5 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://yoursite.com/sitemap.xml
+Sitemap: https://lindseystead.github.io/SmartSheetConnect/sitemap.xml
+
 
