@@ -26,7 +26,7 @@ export function HeroSection() {
                 Never Miss a Lead Again
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                Automated intake forms that instantly organize leads in Google Sheets and notify your team
+                Professional lead capture system that automatically logs submissions to Google Sheets and sends instant notifications to your team
               </p>
             </div>
 
@@ -37,7 +37,7 @@ export function HeroSection() {
                 className="text-base"
                 data-testid="button-try-demo"
               >
-                Try Demo Form
+                Try Demo
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
               <Button 
@@ -46,22 +46,22 @@ export function HeroSection() {
                 onClick={scrollToHowItWorks}
                 data-testid="button-see-how-it-works"
               >
-                See How It Works
+                Learn More
               </Button>
             </div>
 
             <div className="flex flex-wrap items-center gap-6 pt-4">
               <div className="flex items-center gap-2 text-sm">
                 <CheckCircle2 className="w-4 h-4 text-primary" />
-                <span className="text-muted-foreground">Trusted by 500+ businesses</span>
+                <span className="text-muted-foreground">Enterprise-ready security</span>
               </div>
               <div className="flex items-center gap-2 text-sm">
                 <CheckCircle2 className="w-4 h-4 text-primary" />
-                <span className="text-muted-foreground">Free to start</span>
+                <span className="text-muted-foreground">Real-time notifications</span>
               </div>
               <div className="flex items-center gap-2 text-sm">
                 <CheckCircle2 className="w-4 h-4 text-primary" />
-                <span className="text-muted-foreground">No credit card</span>
+                <span className="text-muted-foreground">Zero manual data entry</span>
               </div>
             </div>
           </div>
@@ -82,7 +82,7 @@ export function HeroSection() {
                   <div className="h-24 bg-muted rounded"></div>
                 </div>
                 <div className="h-12 bg-primary rounded flex items-center justify-center">
-                  <span className="text-primary-foreground font-semibold">Submit Lead</span>
+                  <span className="text-primary-foreground font-semibold">Send Message</span>
                 </div>
               </div>
               <div className="absolute -right-4 -top-4 w-16 h-16 bg-primary rounded-full flex items-center justify-center shadow-lg">

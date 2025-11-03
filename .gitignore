@@ -14,6 +14,8 @@ vite.config.ts.*
 .env.local
 .env.*.local
 
+# Setup scripts (may contain temporary credentials during setup)
+
 # Logs
 logs
 *.log
@@ -36,6 +38,7 @@ Thumbs.db
 # Testing
 coverage/
 .nyc_output/
+vitest.config.ts.*
 
 # Temporary files
 *.tmp

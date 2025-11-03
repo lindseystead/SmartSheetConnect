@@ -5,21 +5,21 @@ export function FeaturesSection() {
   const features = [
     {
       icon: Sheet,
-      title: "Instant Google Sheets Logging",
-      description: "Every submission is automatically added to your spreadsheet in real-time. No manual data entry required.",
-      detail: "Auto-sync to spreadsheets",
+      title: "Automatic Google Sheets Logging",
+      description: "Every lead submission is instantly added to your Google Sheets spreadsheet with timestamps and all details. Auto-creates spreadsheets with organization-specific naming.",
+      detail: "Zero manual data entry",
     },
     {
       icon: Bell,
-      title: "Real-Time Email Alerts",
-      description: "Get notified immediately when a new lead comes in. Never let an opportunity slip through the cracks.",
-      detail: "Never miss a notification",
+      title: "Instant Email Notifications",
+      description: "Receive immediate email alerts via Gmail API when a new lead is submitted. Includes all lead details and a direct link to view in Google Sheets.",
+      detail: "Never miss an opportunity",
     },
     {
       icon: MessageSquare,
-      title: "Slack Integration",
-      description: "Keep your entire team in the loop with instant Slack notifications for every new submission.",
-      detail: "Team coordination made easy",
+      title: "Slack Team Notifications",
+      description: "Keep your entire team informed with rich, formatted Slack notifications. Includes lead details and quick access buttons for fast response.",
+      detail: "Real-time team coordination",
     },
   ];
 
@@ -28,10 +28,10 @@ export function FeaturesSection() {
       <div className="max-w-6xl mx-auto">
         <div className="text-center space-y-4 mb-16">
           <h2 className="text-3xl md:text-4xl font-semibold">
-            Everything You Need to Capture Leads
+            Everything You Need to Capture and Manage Leads
           </h2>
           <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
-            Powerful automation that works seamlessly with the tools you already use
+            Powerful automation that works seamlessly with Google Sheets, Gmail, and Slack - the tools your team already uses every day
           </p>
         </div>
 

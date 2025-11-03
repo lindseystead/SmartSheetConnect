@@ -5,7 +5,7 @@
  * Uses Slack Block Kit for rich, interactive messages.
  * 
  * @author Lindsey Stead
- * @module server/slack
+ * @module server/services/slack
  */
 
 /**
@@ -26,16 +26,31 @@ export async function sendSlackNotification(
   leadMessage: string,
   spreadsheetId: string
 ): Promise<{ success: boolean; method: string; error?: any }> {
+  // ============================================================================
+  // CHECK WEBHOOK CONFIGURATION
+  // ============================================================================
+  
+  // Get Slack webhook URL from environment variables
+  // If not configured, fall back to console-only logging
   const webhookUrl = process.env.SLACK_WEBHOOK_URL;
   
+  // If webhook URL is not configured, log to console and return success
+  // This ensures notification failures don't break the lead submission process
   if (!webhookUrl) {
     console.log('💬 Slack Notification (webhook URL not configured):');
     console.log(`New lead from ${leadName} (${leadEmail})`);
     console.log(`Message: ${leadMessage}`);
+    // Return success even though webhook wasn't used (logged to console)
     return { success: true, method: 'console-only' };
   }
 
-  // Format message for Slack using Block Kit
+  // ============================================================================
+  // SLACK MESSAGE FORMATTING (BLOCK KIT)
+  // ============================================================================
+  
+  // Format message for Slack using Block Kit (Slack's rich message format)
+  // Block Kit allows rich formatting with headers, sections, buttons, etc.
+  // Documentation: https://api.slack.com/block-kit
   const slackMessage = {
     text: `🎯 New Lead Submission: ${leadName}`,
     blocks: [
@@ -91,31 +106,65 @@ export async function sendSlackNotification(
         elements: [
           {
             type: "mrkdwn",
-            text: "Sent from Lifesaver Technology Services Intake Form"
+            text: "Sent from SmartSheetConnect Lead Capture System"
           }
         ]
       }
     ]
   };
 
+  // ============================================================================
+  // SEND SLACK NOTIFICATION
+  // ============================================================================
+  
+  // Attempt to send notification via Slack webhook
+  // If webhook fails, log error but don't throw (non-blocking)
   try {
+    // Send POST request to Slack webhook URL
+    // Slack webhooks accept JSON payload with Block Kit message format
     const response = await fetch(webhookUrl, {
-      method: 'POST',
+      method: 'POST', // HTTP POST method for webhook
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json', // JSON content type
       },
-      body: JSON.stringify(slackMessage),
+      body: JSON.stringify(slackMessage), // Stringify Block Kit message
     });
 
+    // ========================================================================
+    // VALIDATE RESPONSE
+    // ========================================================================
+    
+    // Check if response indicates success (200-299 status codes)
+    // Slack webhooks return 200 on success, 4xx/5xx on failure
     if (!response.ok) {
+      // Throw error with status code for error handling
       throw new Error(`Slack API returned ${response.status}`);
     }
 
+    // ========================================================================
+    // SUCCESS
+    // ========================================================================
+    
+    // Log success and return
     console.log('✅ Slack notification sent successfully');
     return { success: true, method: 'webhook' };
+    
   } catch (error) {
+    // ========================================================================
+    // ERROR HANDLING
+    // ========================================================================
+    
+    // Extract error message safely (handles both Error objects and other types)
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    
+    // Log error for debugging and monitoring
+    // Don't throw error (return failure instead) to ensure lead submission succeeds
     console.error(`❌ Failed to send Slack notification: ${errorMessage}`);
+    
+    // Return failure status with error details
+    // This allows calling code to handle notification failure if needed
+    // Lead submission still succeeds even if Slack notification fails
     return { success: false, method: 'webhook', error };
   }
 }
+

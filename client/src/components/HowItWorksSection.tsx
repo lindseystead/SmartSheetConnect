@@ -5,20 +5,20 @@ export function HowItWorksSection() {
     {
       number: "01",
       icon: FileText,
-      title: "Lead Submits Form",
-      description: "Your potential customer fills out the intake form with their information and requirements.",
+      title: "Customer Submits Form",
+      description: "A potential customer fills out your professional lead capture form with their contact information, needs, and message.",
     },
     {
       number: "02",
       icon: Database,
-      title: "Auto-Logs to Google Sheets",
-      description: "The submission is instantly recorded in your Google Sheet with timestamp and all details organized.",
+      title: "Automatically Logs to Google Sheets",
+      description: "The submission is instantly recorded in your Google Sheets spreadsheet with full details, timestamps, and automatic spreadsheet creation if needed.",
     },
     {
       number: "03",
       icon: Mail,
-      title: "Team Gets Notified",
-      description: "Your team receives immediate email and Slack notifications to take action on the new lead.",
+      title: "Your Team Gets Notified Instantly",
+      description: "Your team receives immediate email and Slack notifications with all lead details, enabling fast response times and never missing an opportunity.",
     },
   ];
 
@@ -32,7 +32,7 @@ export function HowItWorksSection() {
                 How It Works
               </h2>
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                Simple, automated workflow that keeps your team organized and responsive
+                A streamlined, automated workflow that ensures your team never misses a lead and can respond instantly
               </p>
             </div>
 

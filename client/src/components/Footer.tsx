@@ -20,29 +20,56 @@ export function Footer() {
               <div className="w-8 h-8 bg-primary rounded-md flex items-center justify-center">
                 <Zap className="w-5 h-5 text-primary-foreground" />
               </div>
-              <span className="text-lg font-semibold">Lifesaver Technology Services</span>
+              <span className="text-lg font-semibold">SmartSheetConnect</span>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Automated intake forms that help businesses capture and organize leads effortlessly.
+              Professional lead capture system that automatically logs submissions to Google Sheets and sends instant notifications to your team.
             </p>
-            <a 
-              href="https://www.lifesavertech.ca" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-sm text-primary hover-elevate rounded px-2 py-1 inline-block -ml-2"
-              data-testid="link-website"
-            >
-              www.lifesavertech.ca
-            </a>
             <div className="flex gap-2">
-              <Button variant="ghost" size="icon" data-testid="button-social-github">
-                <SiGithub className="w-5 h-5" />
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                asChild
+                data-testid="button-social-github"
+              >
+                <a 
+                  href="https://github.com/lindseystead" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  aria-label="GitHub Profile"
+                >
+                  <SiGithub className="w-5 h-5" />
+                </a>
               </Button>
-              <Button variant="ghost" size="icon" data-testid="button-social-twitter">
-                <SiX className="w-5 h-5" />
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                asChild
+                data-testid="button-social-twitter"
+              >
+                <a 
+                  href="https://x.com/lindseystead" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  aria-label="X (Twitter) Profile"
+                >
+                  <SiX className="w-5 h-5" />
+                </a>
               </Button>
-              <Button variant="ghost" size="icon" data-testid="button-social-linkedin">
-                <SiLinkedin className="w-5 h-5" />
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                asChild
+                data-testid="button-social-linkedin"
+              >
+                <a 
+                  href="https://linkedin.com/in/lindseystead" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn Profile"
+                >
+                  <SiLinkedin className="w-5 h-5" />
+                </a>
               </Button>
             </div>
           </div>
@@ -62,46 +89,63 @@ export function Footer() {
                 variant="ghost" 
                 className="justify-start px-0 h-auto"
                 onClick={() => scrollToSection("how-it-works")}
-                data-testid="button-footer-pricing"
+                data-testid="button-footer-how-it-works"
               >
-                Pricing
+                How It Works
               </Button>
               <Button 
                 variant="ghost" 
                 className="justify-start px-0 h-auto"
-                data-testid="button-footer-docs"
+                onClick={() => scrollToSection("demo-form")}
+                data-testid="button-footer-contact"
               >
-                Documentation
+                Contact Us
               </Button>
               <Button 
                 variant="ghost" 
                 className="justify-start px-0 h-auto"
-                data-testid="button-footer-support"
+                asChild
+                data-testid="button-footer-github"
               >
-                Support
+                <a 
+                  href="https://github.com/lindseystead" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                >
+                  GitHub
+                </a>
               </Button>
             </div>
           </div>
 
           <div className="space-y-4">
-            <h3 className="font-semibold">Stay Updated</h3>
+            <h3 className="font-semibold">Resources</h3>
             <p className="text-sm text-muted-foreground">
-              Get the latest updates and tips delivered to your inbox.
+              Professional lead capture automation for businesses that value efficiency and never missing an opportunity.
             </p>
-            <div className="flex gap-2">
-              <Input 
-                type="email" 
-                placeholder="Enter your email" 
-                className="h-10"
-                data-testid="input-newsletter"
-              />
-              <Button data-testid="button-subscribe">Subscribe</Button>
+            <div className="flex flex-col gap-2 text-sm">
+              <a 
+                href="https://github.com/lindseystead" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-primary hover:underline"
+              >
+                View on GitHub
+              </a>
+              <a 
+                href="https://linkedin.com/in/lindseystead" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-primary hover:underline"
+              >
+                Connect on LinkedIn
+              </a>
             </div>
           </div>
         </div>
 
         <div className="pt-8 border-t flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
-          <div>© 2025 Lifesaver Technology Services. All rights reserved.</div>
+          <div>© 2025 SmartSheetConnect. All rights reserved.</div>
           <div className="flex gap-6">
             <button className="hover-elevate rounded px-2 py-1" data-testid="link-privacy">
               Privacy Policy

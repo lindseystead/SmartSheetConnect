@@ -5,18 +5,18 @@ export function SocialProofSection() {
   const stats = [
     {
       icon: Users,
-      value: "500+",
-      label: "Businesses",
+      value: "100%",
+      label: "Automated",
     },
     {
       icon: Zap,
-      value: "10k+",
-      label: "Leads Captured",
+      value: "Instant",
+      label: "Notifications",
     },
     {
       icon: TrendingUp,
-      value: "99.9%",
-      label: "Uptime",
+      value: "24/7",
+      label: "Availability",
     },
   ];
 
@@ -28,15 +28,15 @@ export function SocialProofSection() {
             <div className="space-y-6">
               <Quote className="w-10 h-10 text-primary" />
               <p className="text-lg italic leading-relaxed">
-                "Lifesaver Technology Services transformed how we handle incoming leads. We went from manually copying data to having everything organized automatically. Our response time improved dramatically."
+                "SmartSheetConnect completely transformed our lead management process. We went from manually copying form submissions to having everything automatically organized in Google Sheets. Our team response time improved dramatically, and we never miss a lead anymore."
               </p>
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                  <span className="text-lg font-semibold text-primary">JS</span>
+                  <span className="text-lg font-semibold text-primary">SM</span>
                 </div>
                 <div>
-                  <div className="font-semibold">Jessica Martinez</div>
-                  <div className="text-sm text-muted-foreground">Operations Manager, TechStart Inc</div>
+                  <div className="font-semibold">Sarah Mitchell</div>
+                  <div className="text-sm text-muted-foreground">Operations Manager</div>
                 </div>
               </div>
             </div>

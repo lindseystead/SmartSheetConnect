@@ -6,7 +6,7 @@
  * email, and Slack notifications.
  * 
  * @author Lindsey Stead
- * @module server/storage
+ * @module server/services/storage
  */
 
 import { type LeadSubmission } from "@shared/schema";
@@ -55,7 +55,9 @@ export class MemStorage implements IStorage {
       );
       
       // Send notifications (non-blocking, errors are logged but don't fail the request)
-      const notificationEmail = process.env.NOTIFICATION_EMAIL || 'info@lifesavertech.ca';
+      // Get notification email from environment variable
+      // Default is used only if NOTIFICATION_EMAIL is not set (for development)
+      const notificationEmail = process.env.NOTIFICATION_EMAIL || 'your-email@example.com';
       
       // Execute notifications in parallel
       await Promise.allSettled([
@@ -78,7 +80,21 @@ export class MemStorage implements IStorage {
       
       return result;
     } catch (error) {
+      // Preserve the original error message for better debugging
+      // If it's already a descriptive error (like missing credentials), use it as-is
+      // Otherwise, wrap it with context
       const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      
+      // Check if error is about missing Google credentials - preserve the helpful message
+      if (errorMessage.includes('Google Sheets authentication not configured') || 
+          errorMessage.includes('GOOGLE_CLIENT_ID') ||
+          errorMessage.includes('GOOGLE_CLIENT_SECRET') ||
+          errorMessage.includes('GOOGLE_REFRESH_TOKEN')) {
+        // Use the original error message directly - it's already helpful
+        throw new Error(errorMessage);
+      }
+      
+      // For other errors, add context
       throw new Error(`Failed to submit lead: ${errorMessage}`);
     }
   }
@@ -88,3 +104,4 @@ export class MemStorage implements IStorage {
  * Singleton storage instance used throughout the application.
  */
 export const storage = new MemStorage();
+
