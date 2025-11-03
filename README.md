@@ -1,27 +1,33 @@
-# SmartSheetConnect
+# 🧾 SmartSheetConnect
+
 [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue)]()
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)]()
 [![Build](https://img.shields.io/badge/Build-Passing-brightgreen)]()
 [![Tests](https://img.shields.io/badge/Tests-33%20passing-success)]()
 ![Visitors](https://visitor-badge.laobi.icu/badge?page_id=lindseystead.SmartSheetConnect)
 
-> Self-hosted lead capture and notification system — log web form submissions to Google Sheets, Slack, and Gmail automatically.
+> Self-hosted lead capture and notification system — automatically log web form submissions to Google Sheets, Slack, and Gmail.
 
-A full-stack TypeScript application that automatically logs form submissions to Google Sheets and sends email/Slack notifications.
+SmartSheetConnect is a **full-stack TypeScript application** that automates lead capture by connecting web forms directly to Google Sheets and optional notification channels. It provides a clean, efficient alternative to paid integrations like Zapier — built for developers who want full control.
 
-## Overview
+---
 
-This application provides a lead capture form that:
-- Validates and stores submissions in Google Sheets
-- Sends email notifications via Gmail API
-- Posts notifications to Slack (optional)
-- Includes spam protection and rate limiting
-- **Automatically manages spreadsheets** - creates and reuses the same spreadsheet for all submissions
-- **Zero manual data entry** - all leads automatically logged to Google Sheets
+## ⚙️ Overview
 
-Built with React, Express, TypeScript, and integrates with Google Sheets API, Gmail API, and Slack webhooks.
+SmartSheetConnect includes a lead capture form that:
 
-## Screenshots
+- Validates and stores submissions in Google Sheets  
+- Sends email notifications via Gmail API  
+- Posts notifications to Slack (optional)  
+- Includes spam protection and rate limiting  
+- **Automatically manages spreadsheets** – creates and reuses the same one for all submissions  
+- **Zero manual setup** – all leads are logged automatically
+
+Built with **React**, **Express**, and **TypeScript**, and integrates seamlessly with Google APIs and Slack Webhooks.
+
+---
+
+## 🖼️ Screenshots
 
 ![Landing Page](./assets/screenshot-landing.png)
 <br />
@@ -29,62 +35,61 @@ Built with React, Express, TypeScript, and integrates with Google Sheets API, Gm
 <br />
 ![How It Works](./assets/screenshot-howitworks.png)
 <br />
-## Features
 
-- Form validation with Zod schemas
-- Automatic Google Sheets logging for new leads (creates spreadsheet with a given title)
-- Email notifications via Gmail API
-- Slack notifications via webhooks to SmartSheetConnect channel when configured
-- Honeypot spam protection
-- Rate limiting (100 requests per 15 minutes)
-- Health check endpoint (`/api/health`)
-- TypeScript throughout
-- Test coverage (33 tests)
+---
 
-## Tech Stack
+## 🚀 Features
+
+- Input validation with Zod schemas  
+- Automatic Google Sheets creation and logging  
+- Gmail and Slack notifications  
+- Honeypot spam protection  
+- Rate limiting (100 requests per 15 minutes)  
+- Health check endpoint (`/api/health`)  
+- 33 automated tests covering schema, API, and UI  
+- 100% TypeScript  
+
+---
+
+## 🧰 Tech Stack
 
 **Frontend:**
-- React 18
-- TypeScript
-- Vite
-- React Hook Form + Zod
-- TanStack Query
-- Tailwind CSS + shadcn/ui
+- React 18  
+- TypeScript  
+- Vite  
+- React Hook Form + Zod  
+- TanStack Query  
+- Tailwind CSS + shadcn/ui  
 
 **Backend:**
-- Node.js + Express
-- TypeScript
-- Google APIs (Sheets, Drive, Gmail)
-- Slack Webhooks
+- Node.js + Express  
+- TypeScript  
+- Google APIs (Sheets, Drive, Gmail)  
+- Slack Webhooks  
 
 **Testing:**
-- Vitest
-- React Testing Library
-- Supertest
+- Vitest  
+- React Testing Library  
+- Supertest  
 
-## Getting Started
+---
+
+## ⚡ Getting Started
 
 ### Prerequisites
-
-- Node.js 18+
-- npm or yarn
-- Google Cloud account
-- Slack account webhook is optional
-- Google Cloud project with APIs enabled
+- Node.js 18+  
+- npm or yarn  
+- Google Cloud account  
+- (Optional) Slack webhook for notifications  
 
 ### Installation
 
 ```bash
-# Clone repository
 git clone https://github.com/lindseystead/SmartSheetConnect.git
 cd SmartSheetConnect
-
-# Install dependencies
 npm install
-
-# Copy environment template
 cp .env.example .env
-```
+
 
 ### Configuration
 
@@ -267,39 +272,10 @@ SmartSheetConnect/
 - Setting up Google Cloud requires technical knowledge
 - **Need help with setup?** See [Setup Help](#need-setup-help) above or [LICENSING.md](./LICENSING.md) for commercial options
 
-## Deployment
-
-For detailed deployment instructions, see [DEPLOYMENT.md](./DEPLOYMENT.md).
-
-### Railway Deployment (Quick Start)
-
-1. **Push to GitHub** - Ensure your code is in a GitHub repository
-2. **Create Railway Account** - Go to [railway.app](https://railway.app) and sign up
-3. **Deploy from GitHub** - Connect your repository
-4. **Add Environment Variables** - Copy all variables from your `.env` file to Railway's Variables tab
-5. **Deploy** - Railway automatically builds and deploys
-
-See [DEPLOYMENT.md](./DEPLOYMENT.md) for step-by-step instructions and troubleshooting.
 
 ## License
 
 **Open Source Version:** MIT License.
-
-Copyright (c) 2025 Lindsey Stead, Lifesaver Technology Services
-
-
-This code is available under MIT license for portfolio and open-source use. The MIT license allows free use, modification, and distribution.
-
-**Commercial Licensing:** 
-
-For commercial use, proprietary licensing, or enterprise features, commercial licenses are available. Contact [info@lifesavertech.ca](mailto:info@lifesavertech.ca) or visit [lifesavertech.ca](https://www.lifesavertech.ca) for licensing options.
-
-Commercial licenses include:
-- White-label rights
-- Exclusive commercial use
-- Setup and support services
-- Priority updates
-- Custom development options
 
 ## Author
 
@@ -307,5 +283,3 @@ Lindsey Stead
 
 - GitHub: [@lindseystead](https://github.com/lindseystead)
 - LinkedIn: [lindseystead](https://linkedin.com/in/lindseystead)
-- Website: [lifesavertech.ca](https://www.lifesavertech.ca)
-- Email: info@lifesavertech.ca
