@@ -268,10 +268,12 @@ SmartSheetConnect/
 - Setting up Google Cloud requires technical knowledge
 
 
+### 🪪 Licensing & Commercial Use
+SmartSheetConnect is released under the MIT License — free for personal and developer use.
 
-## License
-
-**Open Source Version:** MIT License.
+For organizations or commercial hosting, **enterprise licensing and support** are available through  
+**Lifesaver Technology Services**.  
+📧 Contact: info@lifesavertech.ca
 
 ## Author
 
@@ -279,3 +281,9 @@ Lindsey Stead
 
 - GitHub: [@lindseystead](https://github.com/lindseystead)
 - LinkedIn: [lindseystead](https://linkedin.com/in/lindseystead)
+
+---
+
+### 🧠 Keywords
+Lead capture · TypeScript · React · Node.js · Google Sheets API · Slack API · Gmail API · Automation · Zapier Alternative · SaaS Integration
+
