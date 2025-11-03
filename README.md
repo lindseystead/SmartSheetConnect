@@ -153,15 +153,11 @@ cp .env.example .env
 
 Setting up Google Cloud credentials and deploying can be complex. **Professional setup services are available:**
 
-- ✅ Google Cloud project configuration
-- ✅ OAuth credentials setup
-- ✅ Railway deployment assistance
-- ✅ Testing and verification
-- ✅ Custom domain configuration (optional)
+-  Google Cloud project configuration
+-  OAuth credentials setup
+-  Testing and verification
+-  Custom domain configuration (optional)
 
-**Contact:** [info@lifesavertech.ca](mailto:info@lifesavertech.ca) or visit [lifesavertech.ca](https://www.lifesavertech.ca)
-
-For commercial licensing options, see [LICENSING.md](./LICENSING.md).
 
 ### Development
 
@@ -270,7 +266,7 @@ SmartSheetConnect/
 - Each business must use their own Google Cloud credentials
 - Never commit `.env` files to version control
 - Setting up Google Cloud requires technical knowledge
-- **Need help with setup?** See [Setup Help](#need-setup-help) above or [LICENSING.md](./LICENSING.md) for commercial options
+
 
 
 ## License
