@@ -1,4 +1,11 @@
 # SmartSheetConnect
+[![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue)]()
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)]()
+[![Build](https://img.shields.io/badge/Build-Passing-brightgreen)]()
+[![Tests](https://img.shields.io/badge/Tests-33%20passing-success)]()
+![Visitors](https://visitor-badge.laobi.icu/badge?page_id=lindseystead.SmartSheetConnect)
+
+> Self-hosted lead capture and notification system — log web form submissions to Google Sheets, Slack, and Gmail automatically.
 
 A full-stack TypeScript application that automatically logs form submissions to Google Sheets and sends email/Slack notifications.
 
@@ -17,17 +24,17 @@ Built with React, Express, TypeScript, and integrates with Google Sheets API, Gm
 ## Screenshots
 
 ![Landing Page](./assets/screenshot-landing.png)
-
+<br />
 ![Contact Form](./assets/screenshot-form.png)
-
+<br />
 ![How It Works](./assets/screenshot-howitworks.png)
-
+<br />
 ## Features
 
 - Form validation with Zod schemas
-- Automatic Google Sheets logging (creates spreadsheet if needed)
+- Automatic Google Sheets logging for new leads (creates spreadsheet with a given title)
 - Email notifications via Gmail API
-- Slack notifications via webhooks
+- Slack notifications via webhooks to SmartSheetConnect channel when configured
 - Honeypot spam protection
 - Rate limiting (100 requests per 15 minutes)
 - Health check endpoint (`/api/health`)
@@ -62,6 +69,7 @@ Built with React, Express, TypeScript, and integrates with Google Sheets API, Gm
 - Node.js 18+
 - npm or yarn
 - Google Cloud account
+- Slack account webhook is optional
 - Google Cloud project with APIs enabled
 
 ### Installation
@@ -275,7 +283,10 @@ See [DEPLOYMENT.md](./DEPLOYMENT.md) for step-by-step instructions and troublesh
 
 ## License
 
-**Open Source Version:** MIT License - see [LICENSE](LICENSE) file.
+**Open Source Version:** MIT License.
+
+Copyright (c) 2025 Lindsey Stead, Lifesaver Technology Services
+
 
 This code is available under MIT license for portfolio and open-source use. The MIT license allows free use, modification, and distribution.
 
