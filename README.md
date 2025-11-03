@@ -6,7 +6,7 @@
 [![Tests](https://img.shields.io/badge/Tests-33%20passing-success)]()
 ![Visitors](https://visitor-badge.laobi.icu/badge?page_id=lindseystead.SmartSheetConnect)
 
-> Self-hosted lead capture and notification system — automatically log web form submissions to Google Sheets, Slack, and Gmail.
+> A deploy-anywhere lead capture and notification system — automatically logs web form submissions to Google Sheets, and sends new-lead notifications via Slack and Gmail once configured.
 
 SmartSheetConnect is a **full-stack TypeScript application** that automates lead capture by connecting web forms directly to Google Sheets and optional notification channels. It provides a clean, efficient alternative to paid integrations like Zapier — built for developers who want full control.
 
@@ -18,7 +18,7 @@ SmartSheetConnect includes a lead capture form that:
 
 - Validates and stores submissions in Google Sheets  
 - Sends email notifications via Gmail API  
-- Posts notifications to Slack (optional)  
+- Posts notifications to Slack channel  
 - Includes spam protection and rate limiting  
 - **Automatically manages spreadsheets** – creates and reuses the same one for all submissions  
 - **Zero manual setup** – all leads are logged automatically
