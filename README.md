@@ -271,9 +271,6 @@ SmartSheetConnect/
 ### 🪪 Licensing & Commercial Use
 SmartSheetConnect is released under the MIT License — free for personal and developer use.
 
-For organizations or commercial hosting, **enterprise licensing and support** are available through  
-**Lifesaver Technology Services**.  
-📧 Contact: info@lifesavertech.ca
 
 ## Author
 
