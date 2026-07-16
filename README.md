@@ -33,8 +33,8 @@ React 18, TypeScript, Vite, Tailwind, shadcn/ui, TanStack Query, React Hook Form
 ## Getting started
 
 ```bash
-git clone https://github.com/lindseystead/smartsheetconnect-portfolio.git
-cd smartsheetconnect-portfolio
+git clone https://github.com/lindseystead/smartsheetconnect.git
+cd smartsheetconnect
 npm install
 npm run dev
 ```
@@ -45,4 +45,4 @@ App runs at `http://localhost:5173`.
 
 MIT — see [LICENSE](LICENSE).
 
-Questions: [GitHub Issues](https://github.com/lindseystead/smartsheetconnect-portfolio/issues)
+Questions: [GitHub Issues](https://github.com/lindseystead/smartsheetconnect/issues)
